@@ -103,8 +103,8 @@ def fetch_transcript(video_id):
     except ImportError:
         return None
     try:
-        segments = YouTubeTranscriptApi.get_transcript(video_id)
-        return " ".join(seg["text"] for seg in segments)
+        transcript = YouTubeTranscriptApi().fetch(video_id)
+        return " ".join(seg.text for seg in transcript)
     except Exception:
         return None
 
